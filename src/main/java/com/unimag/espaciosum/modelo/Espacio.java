@@ -21,6 +21,7 @@ public class Espacio {
 
     private String nombre;
     private Integer capacidad;
+    private String tipo;
 
     @OneToMany
     @JoinColumn(name = "espacioId")
