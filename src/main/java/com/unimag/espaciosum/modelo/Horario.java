@@ -22,4 +22,8 @@ public class Horario {
     private LocalDateTime horaInicio;
     private LocalDateTime horaFin;
 
+    @ManyToOne
+    @JoinColumn(name = "espacio_id")
+    private Espacio espacio;
+
 }

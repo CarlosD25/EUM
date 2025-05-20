@@ -21,4 +21,6 @@ public class Conserje extends Usuario {
 
     @OneToMany(mappedBy = "conserje")
     private List<Reporte> reportes;
+
+
 }

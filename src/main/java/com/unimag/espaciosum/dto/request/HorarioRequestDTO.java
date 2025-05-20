@@ -12,4 +12,5 @@ import java.time.LocalDateTime;
 public class HorarioRequestDTO {
     private LocalDateTime horaInicio;
     private LocalDateTime horaFin;
+    private Long idEspacio;
 }

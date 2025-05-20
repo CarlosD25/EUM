@@ -23,8 +23,7 @@ public class Espacio {
     private Integer capacidad;
     private String tipo;
 
-    @OneToMany
-    @JoinColumn(name = "espacioId")
+    @OneToMany(mappedBy = "espacio")
     private List<Horario> horarios;
 
     @OneToMany(mappedBy = "espacio")

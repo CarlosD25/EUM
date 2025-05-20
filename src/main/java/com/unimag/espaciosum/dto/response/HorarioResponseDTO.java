@@ -13,4 +13,5 @@ public class HorarioResponseDTO {
     private Long id;
     private LocalDateTime horaInicio;
     private LocalDateTime horaFin;
+    private Long idEspacio;
 }
