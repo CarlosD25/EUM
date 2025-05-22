@@ -29,6 +29,10 @@ public class ReporteServicioImpl implements ReporteServicio {
     @Override
     public ReporteResponseDTO create(ReporteRequestDTO reporteRequestDTO) {
         Reporte reporte = reporteMapper.toEntity(reporteRequestDTO);
+        Conserje conserje = conserjeRepositorio.findById(reporteRequestDTO.getIdConserje()).orElseThrow(()->new EntityNotFoundException("No se encontro el id"));
+        Espacio espacio = espacioRepositorio.findById(reporteRequestDTO.getIdEspacio()).orElseThrow(() -> new EntityNotFoundException("Espacio no encontrado"));
+        reporte.setConserje(conserje);
+        reporte.setEspacio(espacio);
         return reporteMapper.toDTO(reporteRepositorio.save(reporte));
     }
 

@@ -16,7 +16,7 @@ public class ConserjeControlador {
     private final ConserjeServicio conserjeServicio;
 
     @PostMapping
-    public ConserjeResponseDTO crearConserje(ConserjeRequestDTO conserjeRequestDTO) {
+    public ConserjeResponseDTO crearConserje(@RequestBody ConserjeRequestDTO conserjeRequestDTO) {
         return conserjeServicio.create(conserjeRequestDTO);
     }
 
@@ -31,7 +31,7 @@ public class ConserjeControlador {
     }
 
     @PutMapping("/{id}")
-    public ConserjeResponseDTO actualizarConserje(@PathVariable Long id, ConserjeRequestDTO conserjeRequestDTO) {
+    public ConserjeResponseDTO actualizarConserje(@PathVariable Long id, @RequestBody ConserjeRequestDTO conserjeRequestDTO) {
         return conserjeServicio.update(id, conserjeRequestDTO);
     }
 

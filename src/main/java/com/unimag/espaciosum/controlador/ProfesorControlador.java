@@ -16,7 +16,7 @@ public class ProfesorControlador {
     private final ProfesorServicio profesorServicio;
 
     @PostMapping
-    public ProfesorResponseDTO crearProfesor(ProfesorRequestDTO profesorRequestDTO) {
+    public ProfesorResponseDTO crearProfesor(@RequestBody ProfesorRequestDTO profesorRequestDTO) {
         return profesorServicio.create(profesorRequestDTO);
     }
 
@@ -31,7 +31,7 @@ public class ProfesorControlador {
     }
 
     @PutMapping("/{id}")
-    public ProfesorResponseDTO actualizarProfesor( @PathVariable Long id, ProfesorRequestDTO profesorRequestDTO) {
+    public ProfesorResponseDTO actualizarProfesor( @PathVariable Long id,@RequestBody ProfesorRequestDTO profesorRequestDTO) {
         return profesorServicio.update(id,profesorRequestDTO );
     }
 

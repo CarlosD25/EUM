@@ -18,7 +18,7 @@ public class HorarioControlador {
 
 
     @PostMapping
-    public HorarioResponseDTO crearHorario(HorarioRequestDTO horarioRequestDTO) {
+    public HorarioResponseDTO crearHorario(@RequestBody HorarioRequestDTO horarioRequestDTO) {
         return horarioServicio.create(horarioRequestDTO);
     }
 
@@ -33,7 +33,7 @@ public class HorarioControlador {
     }
 
     @PutMapping("/{id}")
-    public HorarioResponseDTO actualizarHorario(@PathVariable Long id, HorarioRequestDTO horarioRequestDTO) {
+    public HorarioResponseDTO actualizarHorario(@PathVariable Long id,@RequestBody HorarioRequestDTO horarioRequestDTO) {
         return horarioServicio.update(id,horarioRequestDTO );
     }
 

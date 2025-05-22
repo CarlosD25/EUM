@@ -16,7 +16,7 @@ public class ReporteControlador {
     private final ReporteServicio reporteServicio;
 
     @PostMapping
-    public ReporteResponseDTO crearReporte(ReporteRequestDTO reporteRequestDTO) {
+    public ReporteResponseDTO crearReporte(@RequestBody ReporteRequestDTO reporteRequestDTO) {
         return reporteServicio.create(reporteRequestDTO);
     }
 
@@ -31,7 +31,7 @@ public class ReporteControlador {
     }
 
     @PutMapping("/{id}")
-    public ReporteResponseDTO actualizarReporte( @PathVariable Long id, ReporteRequestDTO reporteRequestDTO) {
+    public ReporteResponseDTO actualizarReporte( @PathVariable Long id,@RequestBody ReporteRequestDTO reporteRequestDTO) {
         return reporteServicio.update(id,reporteRequestDTO );
     }
 

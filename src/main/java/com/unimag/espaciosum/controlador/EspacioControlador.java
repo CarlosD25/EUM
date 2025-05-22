@@ -17,7 +17,7 @@ public class EspacioControlador {
     private final EspacioServicio espacioServicio;
 
     @PostMapping
-    public EspacioResponseDTO crearEspacio(EspacioRequestDTO espacioRequestDTO) {
+    public EspacioResponseDTO crearEspacio(@RequestBody EspacioRequestDTO espacioRequestDTO) {
         return espacioServicio.create(espacioRequestDTO);
     }
 
@@ -32,7 +32,7 @@ public class EspacioControlador {
     }
 
     @PutMapping("/{id}")
-    public EspacioResponseDTO actualizarEspacio(@PathVariable Long id, EspacioRequestDTO espacioRequestDTO) {
+    public EspacioResponseDTO actualizarEspacio(@PathVariable Long id,@RequestBody EspacioRequestDTO espacioRequestDTO) {
         return espacioServicio.update(id, espacioRequestDTO);
     }
 

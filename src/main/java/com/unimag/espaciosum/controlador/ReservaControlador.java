@@ -16,7 +16,7 @@ public class ReservaControlador {
     private final ReservaServicio reservaServicio;
 
     @PostMapping
-    public ReservaResponseDTO crearReserva(ReservaRequestDTO reservaRequestDTO) {
+    public ReservaResponseDTO crearReserva(@RequestBody ReservaRequestDTO reservaRequestDTO) {
         return reservaServicio.create(reservaRequestDTO);
     }
 
@@ -31,7 +31,7 @@ public class ReservaControlador {
     }
 
     @PutMapping("/{id}")
-    public ReservaResponseDTO actualizarReserva( @PathVariable Long id, ReservaRequestDTO reservaRequestDTO) {
+    public ReservaResponseDTO actualizarReserva( @PathVariable Long id,@RequestBody ReservaRequestDTO reservaRequestDTO) {
         return reservaServicio.update(id,reservaRequestDTO );
     }
 

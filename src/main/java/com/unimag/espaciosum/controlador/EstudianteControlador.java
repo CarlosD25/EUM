@@ -16,7 +16,7 @@ public class EstudianteControlador {
     private final EstudianteServicio estudianteServicio;
 
     @PostMapping
-    public EstudianteResponseDTO crearEstudiante(EstudianteRequestDTO estudianteRequestDTO) {
+    public EstudianteResponseDTO crearEstudiante(@RequestBody EstudianteRequestDTO estudianteRequestDTO) {
         return estudianteServicio.create(estudianteRequestDTO);
     }
 
@@ -31,7 +31,7 @@ public class EstudianteControlador {
     }
 
     @PutMapping("/{id}")
-    public EstudianteResponseDTO actualizarEstudiante(@PathVariable Long id, EstudianteRequestDTO estudianteRequestDTO) {
+    public EstudianteResponseDTO actualizarEstudiante(@PathVariable Long id,@RequestBody EstudianteRequestDTO estudianteRequestDTO) {
         return estudianteServicio.update(id,estudianteRequestDTO );
     }
 
