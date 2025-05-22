@@ -24,9 +24,12 @@ public class Espacio {
     private String tipo;
 
     @OneToMany(mappedBy = "espacio")
-    private List<Horario> horarios;
+     private List<Horario> horarios;
 
     @OneToMany(mappedBy = "espacio")
     private List<Reporte> reportes;
+
+    @OneToMany(mappedBy = "espacio")
+    private List<Reserva> reservas;
 
 }

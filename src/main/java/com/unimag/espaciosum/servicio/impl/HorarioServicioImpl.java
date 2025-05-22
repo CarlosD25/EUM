@@ -28,6 +28,11 @@ public class HorarioServicioImpl implements HorarioServicio {
     @Override
     public HorarioResponseDTO create(HorarioRequestDTO horarioRequestDTO) {
         Horario horario = horarioMapper.toEntity(horarioRequestDTO);
+        if(horarioRequestDTO.getIdEspacio()!=null){
+            Espacio espacio = new Espacio();
+            espacio.setId(horarioRequestDTO.getIdEspacio());
+            horario.setEspacio(espacio);
+        }
         return horarioMapper.toDTO(horarioRepositorio.save(horario));
     }
 

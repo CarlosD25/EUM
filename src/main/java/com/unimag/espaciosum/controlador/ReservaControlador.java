@@ -39,4 +39,13 @@ public class ReservaControlador {
     public void borrarReserva(@PathVariable Long id) {
         reservaServicio.delete(id);
     }
+
+    @GetMapping("/estudiante/{id}")
+    public List<ReservaResponseDTO> estudianteId(@PathVariable Long id) {
+        return reservaServicio.reservasEstudiantes(id);
+    }
+    @GetMapping("/profesor/{id}")
+    public List<ReservaResponseDTO> profesorId(@PathVariable Long id) {
+        return reservaServicio.reservasProfesores(id);
+    }
 }

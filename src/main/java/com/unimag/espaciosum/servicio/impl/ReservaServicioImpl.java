@@ -6,6 +6,7 @@ import com.unimag.espaciosum.mapper.ReservaMapper;
 import com.unimag.espaciosum.modelo.*;
 import com.unimag.espaciosum.repositorio.*;
 import com.unimag.espaciosum.servicio.ReservaServicio;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,25 @@ public class ReservaServicioImpl implements ReservaServicio {
     @Override
     public ReservaResponseDTO create(ReservaRequestDTO reservaRequestDTO) {
         Reserva reserva = reservaMapper.toEntity(reservaRequestDTO);
+
+        if(reservaRequestDTO.getIdProfesor() != null) {
+            Profesor profesor = new Profesor();
+            profesor.setId(reservaRequestDTO.getIdProfesor());
+            reserva.setProfesor(profesor);
+        }
+        if(reservaRequestDTO.getIdEstudiante() != null) {
+            Estudiante estudiante = new Estudiante();
+            estudiante.setId(reservaRequestDTO.getIdEstudiante());
+            reserva.setEstudiante(estudiante);
+        }
+        Espacio espacio = new Espacio();
+        espacio.setId(reservaRequestDTO.getIdEspacio());
+
+        Horario horario = new Horario();
+        horario.setId(reservaRequestDTO.getIdHorario());
+
+        reserva.setEspacio(espacio);
+        reserva.setHorario(horario);
         return reservaMapper.toDTO(reservaRepositorio.save(reserva));
     }
 

@@ -1,5 +1,6 @@
 package com.unimag.espaciosum.dto.response;
 
+import com.unimag.espaciosum.modelo.Espacio;
 import lombok.*;
 
 import java.util.List;

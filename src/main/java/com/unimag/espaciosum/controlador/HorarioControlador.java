@@ -41,4 +41,13 @@ public class HorarioControlador {
     public void borrarHorario(@PathVariable Long id) {
         horarioServicio.delete(id);
     }
+
+    @GetMapping("/espacio/{id}")
+    public List<HorarioResponseDTO> espacioId(@PathVariable Long id) {
+        return horarioServicio.filtrarHorarioPorEspacio(id);
+    }
+    @GetMapping("/espacio/{id}/no-reservado")
+    public List<HorarioResponseDTO> espacioIdNoReservado(@PathVariable Long id) {
+        return horarioServicio.filtrarHorariosSinReservaPorEspacio(id);
+    }
 }

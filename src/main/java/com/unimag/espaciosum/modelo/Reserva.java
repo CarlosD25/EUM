@@ -25,7 +25,7 @@ public class Reserva {
     @JoinColumn(name = "profesorId",referencedColumnName = "id")
     private Profesor profesor;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "espacioId")
     private Espacio espacio;
 
