@@ -1,6 +1,7 @@
 package com.unimag.espaciosum.servicio.impl;
 
 import com.unimag.espaciosum.dto.request.ConserjeRequestDTO;
+import com.unimag.espaciosum.dto.request.LoginConserjeRequestDTO;
 import com.unimag.espaciosum.dto.response.ConserjeResponseDTO;
 import com.unimag.espaciosum.mapper.ConserjeMapper;
 import com.unimag.espaciosum.modelo.Conserje;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,5 +55,16 @@ public class ConserjeServicioImpl implements ConserjeServicio {
         }
         conserjeRepositorio.deleteById(id);
 
+    }
+
+    @Override
+    public ConserjeResponseDTO login(LoginConserjeRequestDTO loginConserjeRequestDTO) {
+        String email = loginConserjeRequestDTO.getEmail();
+        String password = loginConserjeRequestDTO.getPassword();
+        Optional<Conserje> conserje = conserjeRepositorio.buscarPorEmailYContrasena(email, password);
+        if(conserje.isPresent()) {
+            return conserjeMapper.toDTO(conserje.get());
+        }
+        throw new RuntimeException("No se encontro un conserje con email "+email);
     }
 }

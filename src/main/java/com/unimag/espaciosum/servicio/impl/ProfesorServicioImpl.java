@@ -1,5 +1,6 @@
 package com.unimag.espaciosum.servicio.impl;
 
+import com.unimag.espaciosum.dto.request.LoginProfesorRequest;
 import com.unimag.espaciosum.dto.request.ProfesorRequestDTO;
 import com.unimag.espaciosum.dto.response.ProfesorResponseDTO;
 import com.unimag.espaciosum.mapper.ProfesorMapper;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,5 +53,16 @@ public class ProfesorServicioImpl implements ProfesorServicio {
             throw new RuntimeException("El profesor no existe");
         }
         profesorRepositorio.deleteById(id);
+    }
+
+    @Override
+    public ProfesorResponseDTO login(LoginProfesorRequest loginProfesorRequest) {
+        String email = loginProfesorRequest.getEmail();
+        String password = loginProfesorRequest.getPassword();
+        Optional<Profesor> profesor = profesorRepositorio.buscarPorEmailYPassword(email, password);
+        if(profesor.isPresent()){
+            return profesorMapper.toDTO(profesor.get());
+        }
+        throw new RuntimeException("No se encontro un profesor con email "+email);
     }
 }

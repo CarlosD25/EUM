@@ -1,5 +1,6 @@
 package com.unimag.espaciosum.controlador;
 
+import com.unimag.espaciosum.dto.request.LoginProfesorRequest;
 import com.unimag.espaciosum.dto.request.ProfesorRequestDTO;
 import com.unimag.espaciosum.dto.response.ProfesorResponseDTO;
 import com.unimag.espaciosum.servicio.ProfesorServicio;
@@ -14,6 +15,11 @@ import java.util.List;
 public class ProfesorControlador {
 
     private final ProfesorServicio profesorServicio;
+
+    @PostMapping("/login")
+    public ProfesorResponseDTO loginProfesor(@RequestBody LoginProfesorRequest loginProfesorRequest) {
+        return profesorServicio.login(loginProfesorRequest);
+    }
 
     @PostMapping
     public ProfesorResponseDTO crearProfesor(@RequestBody ProfesorRequestDTO profesorRequestDTO) {

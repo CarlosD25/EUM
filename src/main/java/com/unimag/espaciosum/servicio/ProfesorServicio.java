@@ -1,5 +1,6 @@
 package com.unimag.espaciosum.servicio;
 
+import com.unimag.espaciosum.dto.request.LoginProfesorRequest;
 import com.unimag.espaciosum.dto.request.ProfesorRequestDTO;
 import com.unimag.espaciosum.dto.response.ProfesorResponseDTO;
 
@@ -12,4 +13,5 @@ public interface ProfesorServicio {
     List<ProfesorResponseDTO> findAll();
     ProfesorResponseDTO update(Long id,ProfesorRequestDTO profesorRequestDTO);
     void delete(Long id);
+    ProfesorResponseDTO login(LoginProfesorRequest loginProfesorRequest);
 }

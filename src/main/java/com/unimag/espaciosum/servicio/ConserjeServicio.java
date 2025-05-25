@@ -2,6 +2,7 @@ package com.unimag.espaciosum.servicio;
 
 import com.unimag.espaciosum.dto.request.ConserjeRequestDTO;
 import com.unimag.espaciosum.dto.request.EstudianteRequestDTO;
+import com.unimag.espaciosum.dto.request.LoginConserjeRequestDTO;
 import com.unimag.espaciosum.dto.response.ConserjeResponseDTO;
 import com.unimag.espaciosum.dto.response.EstudianteResponseDTO;
 
@@ -14,5 +15,6 @@ public interface ConserjeServicio {
     List<ConserjeResponseDTO> findAll();
     ConserjeResponseDTO update(Long id,ConserjeRequestDTO conserjeRequestDTO);
     void delete(Long id);
+    ConserjeResponseDTO login(LoginConserjeRequestDTO loginConserjeRequestDTO);
 
 }

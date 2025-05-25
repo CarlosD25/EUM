@@ -1,6 +1,7 @@
 package com.unimag.espaciosum.controlador;
 
 import com.unimag.espaciosum.dto.request.ConserjeRequestDTO;
+import com.unimag.espaciosum.dto.request.LoginConserjeRequestDTO;
 import com.unimag.espaciosum.dto.response.ConserjeResponseDTO;
 import com.unimag.espaciosum.servicio.ConserjeServicio;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,11 @@ import java.util.List;
 public class ConserjeControlador {
 
     private final ConserjeServicio conserjeServicio;
+
+    @PostMapping("/login")
+    public ConserjeResponseDTO loginConserje(@RequestBody LoginConserjeRequestDTO loginConserjeRequestDTO) {
+        return conserjeServicio.login(loginConserjeRequestDTO);
+    }
 
     @PostMapping
     public ConserjeResponseDTO crearConserje(@RequestBody ConserjeRequestDTO conserjeRequestDTO) {
