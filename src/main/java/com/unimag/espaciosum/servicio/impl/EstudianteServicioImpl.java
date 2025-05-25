@@ -1,6 +1,7 @@
 package com.unimag.espaciosum.servicio.impl;
 
 import com.unimag.espaciosum.dto.request.EstudianteRequestDTO;
+import com.unimag.espaciosum.dto.request.LoginRequestDTO;
 import com.unimag.espaciosum.dto.response.EstudianteResponseDTO;
 import com.unimag.espaciosum.mapper.EstudianteMapper;
 import com.unimag.espaciosum.modelo.Estudiante;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,8 +59,15 @@ public class EstudianteServicioImpl implements EstudianteServicio {
     }
 
     @Override
-    public EstudianteResponseDTO login(String codigo, String password) {
-        return null;
+    public EstudianteResponseDTO login(LoginRequestDTO loginRequestDTO) {
+
+        String codigo = loginRequestDTO.getCodigo();
+        String password = loginRequestDTO.getPassword();
+        Optional<Estudiante> response = estudianteRepositorio.buscarPorCodigoYContrasena(codigo, password);
+        if (response.isPresent()) {
+            return estudianteMapper.toDTO(response.get());
+        }
+        throw new EntityNotFoundException("Estudiante no encontrado");
     }
 
     @Override
