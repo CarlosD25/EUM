@@ -1,6 +1,7 @@
 package com.unimag.espaciosum.controlador;
 
 import com.unimag.espaciosum.dto.request.EstudianteRequestDTO;
+import com.unimag.espaciosum.dto.request.LoginRequestDTO;
 import com.unimag.espaciosum.dto.response.EstudianteResponseDTO;
 import com.unimag.espaciosum.servicio.EstudianteServicio;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,11 @@ import java.util.List;
 public class EstudianteControlador {
 
     private final EstudianteServicio estudianteServicio;
+
+    @PostMapping("/login")
+    public EstudianteResponseDTO login(@RequestBody LoginRequestDTO loginRequestDTO) {
+        return estudianteServicio.login(loginRequestDTO);
+    }
 
     @PostMapping
     public EstudianteResponseDTO crearEstudiante(@RequestBody EstudianteRequestDTO estudianteRequestDTO) {

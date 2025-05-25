@@ -20,7 +20,12 @@ public class EspacioControlador {
     public EspacioResponseDTO crearEspacio(@RequestBody EspacioRequestDTO espacioRequestDTO) {
         return espacioServicio.create(espacioRequestDTO);
     }
-
+    
+    @GetMapping("/tipo/{tipo}")
+    public List<EspacioResponseDTO> listarPorTipo(@PathVariable String tipo) {
+        return espacioServicio.filtrarPorTipo(tipo);
+    }
+    
     @GetMapping
     public List<EspacioResponseDTO> todosLosEspacios() {
         return espacioServicio.findAll();

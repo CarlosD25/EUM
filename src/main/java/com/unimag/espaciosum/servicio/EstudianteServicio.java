@@ -1,6 +1,7 @@
 package com.unimag.espaciosum.servicio;
 
 import com.unimag.espaciosum.dto.request.EstudianteRequestDTO;
+import com.unimag.espaciosum.dto.request.LoginRequestDTO;
 import com.unimag.espaciosum.dto.response.EstudianteResponseDTO;
 
 import java.util.List;
@@ -13,6 +14,6 @@ public interface EstudianteServicio {
     EstudianteResponseDTO update(Long id,EstudianteRequestDTO estudianteRequestDTO);
     void delete(Long id);
 
-    EstudianteResponseDTO login(String codigo, String password);
+    EstudianteResponseDTO login(LoginRequestDTO loginRequestDTO);
     EstudianteResponseDTO buscarPorCodigoYContrasena(String codigo, String contrasena);
 }
