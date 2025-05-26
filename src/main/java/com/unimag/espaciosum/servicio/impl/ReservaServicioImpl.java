@@ -6,7 +6,6 @@ import com.unimag.espaciosum.mapper.ReservaMapper;
 import com.unimag.espaciosum.modelo.*;
 import com.unimag.espaciosum.repositorio.*;
 import com.unimag.espaciosum.servicio.ReservaServicio;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,6 @@
 package com.unimag.espaciosum.servicio;
 
-import com.unimag.espaciosum.dto.request.EstudianteRequestDTO;
 import com.unimag.espaciosum.dto.request.HorarioRequestDTO;
-import com.unimag.espaciosum.dto.response.EstudianteResponseDTO;
 import com.unimag.espaciosum.dto.response.HorarioResponseDTO;
 
 import java.util.List;
