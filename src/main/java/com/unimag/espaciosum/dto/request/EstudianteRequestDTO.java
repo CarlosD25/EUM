@@ -1,5 +1,6 @@
 package com.unimag.espaciosum.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -8,9 +9,15 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class EstudianteRequestDTO {
+
+    @NotBlank
     private String nombre;
+    @NotBlank
     private String email;
+    @NotBlank
     private String password;
+    @NotBlank
     private String identificacion;
+    @NotBlank
     private String codigo;
 }

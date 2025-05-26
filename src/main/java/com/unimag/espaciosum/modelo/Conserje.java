@@ -1,14 +1,13 @@
 package com.unimag.espaciosum.modelo;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @Entity
+@SuperBuilder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,6 +20,5 @@ public class Conserje extends Usuario {
 
     @OneToMany(mappedBy = "conserje")
     private List<Reporte> reportes;
-
 
 }
