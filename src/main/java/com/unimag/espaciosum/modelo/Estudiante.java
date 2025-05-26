@@ -21,6 +21,6 @@ public class Estudiante extends Usuario{
 
     private String codigo;
 
-    @OneToMany(mappedBy = "estudiante")
+    @OneToMany(mappedBy = "estudiante",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reserva> reservas;
 }

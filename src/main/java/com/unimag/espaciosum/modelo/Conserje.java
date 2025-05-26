@@ -19,7 +19,7 @@ public class Conserje extends Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "conserje")
+    @OneToMany(mappedBy = "conserje",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reporte> reportes;
 
 

@@ -19,6 +19,6 @@ public class Profesor extends Usuario{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "profesor")
+    @OneToMany(mappedBy = "profesor",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reserva> reservas;
 }

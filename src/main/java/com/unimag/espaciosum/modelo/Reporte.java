@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Getter
@@ -21,10 +23,12 @@ public class Reporte {
 
     @ManyToOne
     @JoinColumn(name= "conserjeId", referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Conserje conserje;
 
     @ManyToOne
     @JoinColumn(name="espacioId",referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Espacio espacio;
 
 }

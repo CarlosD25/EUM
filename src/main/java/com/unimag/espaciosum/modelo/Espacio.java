@@ -26,10 +26,10 @@ public class Espacio {
     @OneToMany(mappedBy = "espacio")
      private List<Horario> horarios;
 
-    @OneToMany(mappedBy = "espacio")
+    @OneToMany(mappedBy = "espacio",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reporte> reportes;
 
-    @OneToMany(mappedBy = "espacio")
+    @OneToMany(mappedBy = "espacio",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reserva> reservas;
 
 }
