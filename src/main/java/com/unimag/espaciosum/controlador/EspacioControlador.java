@@ -4,6 +4,7 @@ package com.unimag.espaciosum.controlador;
 import com.unimag.espaciosum.dto.request.EspacioRequestDTO;
 import com.unimag.espaciosum.dto.response.EspacioResponseDTO;
 import com.unimag.espaciosum.servicio.EspacioServicio;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class EspacioControlador {
     private final EspacioServicio espacioServicio;
 
     @PostMapping
-    public EspacioResponseDTO crearEspacio(@RequestBody EspacioRequestDTO espacioRequestDTO) {
+    public EspacioResponseDTO crearEspacio(@Valid @RequestBody EspacioRequestDTO espacioRequestDTO) {
         return espacioServicio.create(espacioRequestDTO);
     }
     
@@ -37,7 +38,7 @@ public class EspacioControlador {
     }
 
     @PutMapping("/{id}")
-    public EspacioResponseDTO actualizarEspacio(@PathVariable Long id,@RequestBody EspacioRequestDTO espacioRequestDTO) {
+    public EspacioResponseDTO actualizarEspacio(@PathVariable Long id,@Valid @RequestBody EspacioRequestDTO espacioRequestDTO) {
         return espacioServicio.update(id, espacioRequestDTO);
     }
 

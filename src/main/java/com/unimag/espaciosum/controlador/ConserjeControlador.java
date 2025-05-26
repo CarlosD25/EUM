@@ -4,6 +4,7 @@ import com.unimag.espaciosum.dto.request.ConserjeRequestDTO;
 import com.unimag.espaciosum.dto.request.LoginConserjeRequestDTO;
 import com.unimag.espaciosum.dto.response.ConserjeResponseDTO;
 import com.unimag.espaciosum.servicio.ConserjeServicio;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +18,12 @@ public class ConserjeControlador {
     private final ConserjeServicio conserjeServicio;
 
     @PostMapping("/login")
-    public ConserjeResponseDTO loginConserje(@RequestBody LoginConserjeRequestDTO loginConserjeRequestDTO) {
+    public ConserjeResponseDTO loginConserje(@Valid @RequestBody LoginConserjeRequestDTO loginConserjeRequestDTO) {
         return conserjeServicio.login(loginConserjeRequestDTO);
     }
 
     @PostMapping
-    public ConserjeResponseDTO crearConserje(@RequestBody ConserjeRequestDTO conserjeRequestDTO) {
+    public ConserjeResponseDTO crearConserje(@Valid @RequestBody ConserjeRequestDTO conserjeRequestDTO) {
         return conserjeServicio.create(conserjeRequestDTO);
     }
 
@@ -37,7 +38,7 @@ public class ConserjeControlador {
     }
 
     @PutMapping("/{id}")
-    public ConserjeResponseDTO actualizarConserje(@PathVariable Long id, @RequestBody ConserjeRequestDTO conserjeRequestDTO) {
+    public ConserjeResponseDTO actualizarConserje(@PathVariable Long id, @Valid @RequestBody ConserjeRequestDTO conserjeRequestDTO) {
         return conserjeServicio.update(id, conserjeRequestDTO);
     }
 

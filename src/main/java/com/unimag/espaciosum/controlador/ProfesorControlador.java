@@ -4,6 +4,7 @@ import com.unimag.espaciosum.dto.request.LoginProfesorRequest;
 import com.unimag.espaciosum.dto.request.ProfesorRequestDTO;
 import com.unimag.espaciosum.dto.response.ProfesorResponseDTO;
 import com.unimag.espaciosum.servicio.ProfesorServicio;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +18,12 @@ public class ProfesorControlador {
     private final ProfesorServicio profesorServicio;
 
     @PostMapping("/login")
-    public ProfesorResponseDTO loginProfesor(@RequestBody LoginProfesorRequest loginProfesorRequest) {
+    public ProfesorResponseDTO loginProfesor(@Valid  @RequestBody LoginProfesorRequest loginProfesorRequest) {
         return profesorServicio.login(loginProfesorRequest);
     }
 
     @PostMapping
-    public ProfesorResponseDTO crearProfesor(@RequestBody ProfesorRequestDTO profesorRequestDTO) {
+    public ProfesorResponseDTO crearProfesor(@Valid @RequestBody ProfesorRequestDTO profesorRequestDTO) {
         return profesorServicio.create(profesorRequestDTO);
     }
 
@@ -37,7 +38,7 @@ public class ProfesorControlador {
     }
 
     @PutMapping("/{id}")
-    public ProfesorResponseDTO actualizarProfesor( @PathVariable Long id,@RequestBody ProfesorRequestDTO profesorRequestDTO) {
+    public ProfesorResponseDTO actualizarProfesor( @PathVariable Long id,@Valid @RequestBody ProfesorRequestDTO profesorRequestDTO) {
         return profesorServicio.update(id,profesorRequestDTO );
     }
 

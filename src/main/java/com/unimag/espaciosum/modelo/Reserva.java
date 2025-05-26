@@ -7,12 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Reserva {
 
     @Id
@@ -34,7 +36,7 @@ public class Reserva {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Espacio espacio;
 
-    @OneToOne
-    @JoinColumn(name = "horarioId")
+    @ManyToOne
+    @JoinColumn(name = "horarioId", nullable = false)
     private Horario horario;
 }
