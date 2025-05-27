@@ -19,7 +19,7 @@
     <description>espaciosum</description>
 
     <properties>
-        <java.version>20</java.version>
+        <java.version>17</java.version>
         <lombok.version>1.18.28</lombok.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
     </properties>
