@@ -10,5 +10,6 @@ public interface ReporteServicio {
     ReporteResponseDTO finbyId(Long id);
     List<ReporteResponseDTO> findAll();
     ReporteResponseDTO update(Long id,ReporteRequestDTO reporteRequestDTO);
+    List<ReporteResponseDTO> reportesPorIdEspacio(Long id);
     void delete(Long id);
 }

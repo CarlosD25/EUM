@@ -50,4 +50,9 @@ public class HorarioControlador {
     public List<HorarioResponseDTO> espacioIdNoReservado(@PathVariable Long id) {
         return horarioServicio.filtrarHorariosSinReservaPorEspacio(id);
     }
+
+    @GetMapping("/espacio/{espacioId}/dia/{dia}")
+    public List<HorarioResponseDTO> obtenerHorariosPorEspacioYDia(@PathVariable Long espacioId, @PathVariable String dia) {
+        return horarioServicio.filtrarHorariosPorEspacioDia(espacioId, dia);
+    }
 }

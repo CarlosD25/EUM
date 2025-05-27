@@ -59,6 +59,11 @@ public class ReporteServicioImpl implements ReporteServicio {
     }
 
     @Override
+    public List<ReporteResponseDTO> reportesPorIdEspacio(Long id) {
+        return reporteRepositorio.findAll().stream().map(reporteMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Long id) {
         if(!reporteRepositorio.existsById(id)) {
             throw new EntityNotFoundException("No se encontro el reporte con id: " + id);

@@ -12,6 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -74,5 +75,13 @@ public class HorarioServicioImpl implements HorarioServicio {
     @Override
     public List<HorarioResponseDTO> filtrarHorariosSinReservaPorEspacio(Long espacioId) {
         return horarioRepositorio.filtrarHorariosSinReservaPorEspacio(espacioId).stream().map(horarioMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<HorarioResponseDTO> filtrarHorariosPorEspacioDia(Long espacioId, String dia) {
+        DayOfWeek diaS = DayOfWeek.valueOf(dia.toUpperCase());
+        return horarioRepositorio.filtrarHorarioPorEspacio(espacioId).stream()
+                .filter(h->h.getHoraInicio().getDayOfWeek().equals(diaS))
+                .map(horarioMapper::toDTO).collect(Collectors.toList());
     }
 }

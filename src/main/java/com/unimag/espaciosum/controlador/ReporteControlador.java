@@ -39,4 +39,9 @@ public class ReporteControlador {
     public void borrarReporte(@PathVariable Long id) {
         reporteServicio.delete(id);
     }
+
+    @GetMapping("/espacio/{id}")
+    public List<ReporteResponseDTO> reportesPorIdEspacio(@PathVariable Long id) {
+        return reporteServicio.reportesPorIdEspacio(id);
+    }
 }

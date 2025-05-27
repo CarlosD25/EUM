@@ -15,4 +15,5 @@ public interface HorarioServicio {
 
     List<HorarioResponseDTO> filtrarHorarioPorEspacio(Long espacioId);
     List<HorarioResponseDTO> filtrarHorariosSinReservaPorEspacio(Long espacioId);
+    List<HorarioResponseDTO> filtrarHorariosPorEspacioDia(Long espacioId, String dia);
 }
