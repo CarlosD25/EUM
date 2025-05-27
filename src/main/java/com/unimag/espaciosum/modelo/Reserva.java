@@ -37,6 +37,6 @@ public class Reserva {
     private Espacio espacio;
 
     @ManyToOne
-    @JoinColumn(name = "horarioId", nullable = false)
+    @JoinColumn(name = "horarioId", nullable = true)
     private Horario horario;
 }
