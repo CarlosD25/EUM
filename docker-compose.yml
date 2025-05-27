@@ -1,0 +1,39 @@
+services:
+  api:
+    build: .
+    container_name: espaciosum-api
+    ports:
+      - "80:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/esum
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 4222974d
+    networks:
+      - espaciosum-network
+
+  db:
+    image: postgres:13-alpine
+    container_name: espaciosum-db
+    environment:
+      POSTGRES_DB: esum
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 4222974d
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5434:5432"
+    networks:
+      - espaciosum-network
+volumes:
+  postgres_data:
+
+networks:
+  espaciosum-network:
