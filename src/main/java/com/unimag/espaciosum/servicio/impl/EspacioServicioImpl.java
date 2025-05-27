@@ -50,6 +50,7 @@ public class EspacioServicioImpl implements EspacioServicio {
         if(!espacioRepositorio.existsById(id)){
             throw new EntityNotFoundException("Espacio no encontrado");
         }
+        espacioRepositorio.deleteById(id);
     }
 
     @Override
