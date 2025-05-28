@@ -65,6 +65,7 @@ public class HorarioServicioImpl implements HorarioServicio {
         if(!horarioRepositorio.existsById(id)){
             throw new EntityNotFoundException("No se encuentra el horario");
         }
+        reservaRepositorio.deleteByHorarioId(id);
         horarioRepositorio.deleteById(id);
 
     }
