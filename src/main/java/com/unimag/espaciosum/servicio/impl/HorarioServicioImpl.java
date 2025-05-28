@@ -7,6 +7,7 @@ import com.unimag.espaciosum.modelo.Espacio;
 import com.unimag.espaciosum.modelo.Horario;
 import com.unimag.espaciosum.repositorio.EspacioRepositorio;
 import com.unimag.espaciosum.repositorio.HorarioRepositorio;
+import com.unimag.espaciosum.repositorio.ReservaRepositorio;
 import com.unimag.espaciosum.servicio.HorarioServicio;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class HorarioServicioImpl implements HorarioServicio {
     private final HorarioRepositorio horarioRepositorio;
     private final HorarioMapper horarioMapper;
     private final EspacioRepositorio espacioRepositorio;
+    private final ReservaRepositorio reservaRepositorio;
 
 
     @Override
@@ -80,8 +82,11 @@ public class HorarioServicioImpl implements HorarioServicio {
     @Override
     public List<HorarioResponseDTO> filtrarHorariosPorEspacioDia(Long espacioId, String dia) {
         DayOfWeek diaS = DayOfWeek.valueOf(dia.toUpperCase());
+
         return horarioRepositorio.filtrarHorarioPorEspacio(espacioId).stream()
-                .filter(h->h.getHoraInicio().getDayOfWeek().equals(diaS))
-                .map(horarioMapper::toDTO).collect(Collectors.toList());
+                .filter(h -> h.getHoraInicio().getDayOfWeek().equals(diaS))
+                .filter(h -> !reservaRepositorio.existsByHorarioId(h.getId())) 
+                .map(horarioMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }
