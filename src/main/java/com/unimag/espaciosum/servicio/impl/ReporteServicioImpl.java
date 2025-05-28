@@ -60,7 +60,7 @@ public class ReporteServicioImpl implements ReporteServicio {
 
     @Override
     public List<ReporteResponseDTO> reportesPorIdEspacio(Long id) {
-        return reporteRepositorio.findAll().stream().map(reporteMapper::toDTO).collect(Collectors.toList());
+        return reporteRepositorio.findByEspacioId(id).stream().map(reporteMapper::toDTO).collect(Collectors.toList());
     }
 
     @Override
