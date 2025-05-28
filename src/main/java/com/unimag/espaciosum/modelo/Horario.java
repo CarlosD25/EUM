@@ -2,6 +2,8 @@ package com.unimag.espaciosum.modelo;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +24,7 @@ public class Horario {
 
     @ManyToOne
     @JoinColumn(name = "espacio_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Espacio espacio;
 
 }

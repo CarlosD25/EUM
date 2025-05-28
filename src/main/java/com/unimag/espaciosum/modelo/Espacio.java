@@ -21,7 +21,7 @@ public class Espacio {
     private Integer capacidad;
     private String tipo;
 
-    @OneToMany(mappedBy = "espacio")
+    @OneToMany(mappedBy = "espacio",cascade = CascadeType.ALL, orphanRemoval = true)
      private List<Horario> horarios;
 
     @OneToMany(mappedBy = "espacio",cascade = CascadeType.ALL, orphanRemoval = true)
